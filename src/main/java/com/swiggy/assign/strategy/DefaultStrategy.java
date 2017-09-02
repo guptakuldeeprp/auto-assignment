@@ -27,17 +27,17 @@ public class DefaultStrategy implements AssignmentStrategy {
         if (provider == null || order == null) return null;
         Collection<DeliveryExec> deliveryExecs = provider.listDeliveryExecs();
         if (deliveryExecs.size() == 0) return null;
-        double minScore = Double.MAX_VALUE;
+        double minCost = Double.MAX_VALUE;
         final List<DeliveryExec> result = new ArrayList<DeliveryExec>();
         for (DeliveryExec deliveryExec : deliveryExecs) {
-            double score = score(order, deliveryExec);
+            double cost = cost(order, deliveryExec);
 
-            if (score < minScore) {
-                minScore = score;
+            if (cost < minCost) {
+                minCost = cost;
                 result.clear();
                 result.add(deliveryExec);
             }
-            if (score == minScore)
+            if (cost == minCost)
                 result.add(deliveryExec);
         }
         if (baseStrategy != null)
@@ -46,7 +46,7 @@ public class DefaultStrategy implements AssignmentStrategy {
     }
 
 
-    protected double score(Order order, DeliveryExec deliveryExec) {
+    protected double cost(Order order, DeliveryExec deliveryExec) {
         double haversine = Haversine.distance(deliveryExec.getLat(), deliveryExec.getLon(), order.getLat(), order.getLon());
         return haversine * (1 / order.getOrderTime()) * (1 / deliveryExec.getLastOrderDeliveryTime());
     }
