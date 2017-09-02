@@ -1,12 +1,12 @@
-package com.swiggy.assign;
+package com.swiggy.autoassign;
 
-import com.swiggy.assign.strategy.AssignmentStrategy;
-import com.swiggy.assign.delivery.DeliveryExecProvider;
-import com.swiggy.assign.strategy.DefaultStrategy;
+import com.swiggy.autoassign.strategy.assignment.AssignmentStrategy;
+import com.swiggy.autoassign.delivery.DeliveryExecProvider;
+import com.swiggy.autoassign.strategy.assignment.CostBasedAssignmentStrategy;
 
 public class AutoAssignBuilder {
 
-    private AssignmentStrategy assignmentStrategy = new DefaultStrategy();
+    private AssignmentStrategy assignmentStrategy = new CostBasedAssignmentStrategy();
     private DeliveryExecProvider deliveryExecProvider;
 
     public AutoAssignBuilder withAssignmentStrategy(AssignmentStrategy assignmentStrategy) {

@@ -1,9 +1,9 @@
-package com.swiggy.assign;
+package com.swiggy.autoassign;
 
-import com.swiggy.assign.delivery.DeliveryExecProvider;
-import com.swiggy.assign.entity.DeliveryExec;
-import com.swiggy.assign.entity.Order;
-import com.swiggy.assign.strategy.AssignmentStrategy;
+import com.swiggy.autoassign.delivery.DeliveryExecProvider;
+import com.swiggy.autoassign.entity.DeliveryExec;
+import com.swiggy.autoassign.entity.Order;
+import com.swiggy.autoassign.strategy.assignment.AssignmentStrategy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
-import java.util.stream.IntStream;
 
 public class AutoAssign {
 

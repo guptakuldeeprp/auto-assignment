@@ -1,4 +1,4 @@
-package com.swiggy.assign.entity;
+package com.swiggy.autoassign.entity;
 
 import java.util.concurrent.TimeUnit;
 

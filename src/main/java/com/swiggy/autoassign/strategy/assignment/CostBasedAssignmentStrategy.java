@@ -1,24 +1,31 @@
-package com.swiggy.assign.strategy;
+package com.swiggy.autoassign.strategy.assignment;
 
-import com.swiggy.assign.entity.DeliveryExec;
-import com.swiggy.assign.delivery.DeliveryExecProvider;
-import com.swiggy.assign.delivery.impl.InMemoryDeliveryExecProvider;
-import com.swiggy.assign.entity.Order;
-import com.swiggy.util.Haversine;
+import com.swiggy.autoassign.entity.DeliveryExec;
+import com.swiggy.autoassign.delivery.DeliveryExecProvider;
+import com.swiggy.autoassign.delivery.impl.InMemoryDeliveryExecProvider;
+import com.swiggy.autoassign.entity.Order;
+import com.swiggy.autoassign.strategy.cost.CostStrategy;
+import com.swiggy.autoassign.strategy.cost.DefaultCostStrategy;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class DefaultStrategy implements AssignmentStrategy {
+public class CostBasedAssignmentStrategy implements AssignmentStrategy {
 
+    private CostStrategy costStrategy;
     private AssignmentStrategy baseStrategy; // used for tie breaking
 
-    public DefaultStrategy() {
-
+    public CostBasedAssignmentStrategy() {
+        this(new DefaultCostStrategy());
     }
 
-    public DefaultStrategy(AssignmentStrategy baseStrategy) {
+
+    public CostBasedAssignmentStrategy(CostStrategy costStrategy) {
+        this(costStrategy, null);
+    }
+
+    public CostBasedAssignmentStrategy(CostStrategy costStrategy, AssignmentStrategy baseStrategy) {
         this.baseStrategy = baseStrategy;
     }
 
@@ -30,7 +37,7 @@ public class DefaultStrategy implements AssignmentStrategy {
         double minCost = Double.MAX_VALUE;
         final List<DeliveryExec> result = new ArrayList<DeliveryExec>();
         for (DeliveryExec deliveryExec : deliveryExecs) {
-            double cost = cost(order, deliveryExec);
+            double cost = costStrategy.getCost(order, deliveryExec);
 
             if (cost < minCost) {
                 minCost = cost;
@@ -45,9 +52,4 @@ public class DefaultStrategy implements AssignmentStrategy {
         return result.get(0);
     }
 
-
-    protected double cost(Order order, DeliveryExec deliveryExec) {
-        double haversine = Haversine.distance(deliveryExec.getLat(), deliveryExec.getLon(), order.getLat(), order.getLon());
-        return haversine * (1 / order.getOrderTime()) * (1 / deliveryExec.getLastOrderDeliveryTime());
-    }
 }

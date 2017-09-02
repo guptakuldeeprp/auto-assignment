@@ -6,11 +6,13 @@ It greedily selects minimum cost (local minimum) of available DeliveryExecutive 
 It used fork-join to split the task of finding minumum cost for a list of orders.
 
 Assumptions:
- - One order will be assigned to one delivery executive
+ - One order will be assigned to one DeliveryExecutive
+ - This part of application does not deal with setting the lastOrderDeliveryTime of DeliveryExecutive.
+ It is the calling code's responsibility to set it.
 
  ## Sample Main class example
  ```
-  com.swiggy.assign.Runner
+  com.swiggy.autoassign.Runner
  ```
 
  ## Foot notes:

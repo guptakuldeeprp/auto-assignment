@@ -1,7 +1,7 @@
-package com.swiggy.assign.delivery.impl;
+package com.swiggy.autoassign.delivery.impl;
 
-import com.swiggy.assign.entity.DeliveryExec;
-import com.swiggy.assign.delivery.DeliveryExecProvider;
+import com.swiggy.autoassign.entity.DeliveryExec;
+import com.swiggy.autoassign.delivery.DeliveryExecProvider;
 
 import java.util.Collection;
 import java.util.concurrent.ConcurrentLinkedQueue;

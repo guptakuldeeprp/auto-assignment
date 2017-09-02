@@ -1,6 +1,6 @@
-package com.swiggy.assign.delivery;
+package com.swiggy.autoassign.delivery;
 
-import com.swiggy.assign.entity.DeliveryExec;
+import com.swiggy.autoassign.entity.DeliveryExec;
 
 import java.util.Collection;
 

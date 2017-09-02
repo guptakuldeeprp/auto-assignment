@@ -1,4 +1,4 @@
-package com.swiggy.assign.entity;
+package com.swiggy.autoassign.entity;
 
 public class DeliveryExec {
 
