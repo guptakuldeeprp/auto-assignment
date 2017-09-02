@@ -1,10 +1,10 @@
 package com.swiggy.assign.strategy;
 
-import com.swiggy.delivery.DeliveryExec;
-import com.swiggy.delivery.DeliveryExecProvider;
-import com.swiggy.order.Order;
+import com.swiggy.assign.entity.DeliveryExec;
+import com.swiggy.assign.delivery.DeliveryExecProvider;
+import com.swiggy.assign.entity.Order;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Random;
 
 public class RandomStrategy implements AssignmentStrategy {
@@ -15,9 +15,14 @@ public class RandomStrategy implements AssignmentStrategy {
     public DeliveryExec getDeliveryExec(Order order, DeliveryExecProvider provider) {
 
         if (order == null || provider == null) return null;
-        List<DeliveryExec> deliveryExecs = provider.listDeliveryExecs();
+        Collection<DeliveryExec> deliveryExecs = provider.listDeliveryExecs();
         if (deliveryExecs.size() == 0) return null;
-        int idx = random.nextInt(deliveryExecs.size());
-        return deliveryExecs.get(idx);
+        return deliveryExecs.stream()
+                .skip((int) (deliveryExecs.size() * Math.random()))
+                .findFirst().get();
+
+//        int idx = random.nextInt(deliveryExecs.size());
+//        return deliveryExecs.get(idx);
+
     }
 }

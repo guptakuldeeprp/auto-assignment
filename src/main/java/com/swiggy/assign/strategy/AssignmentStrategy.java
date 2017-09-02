@@ -1,8 +1,8 @@
 package com.swiggy.assign.strategy;
 
-import com.swiggy.delivery.DeliveryExec;
-import com.swiggy.delivery.DeliveryExecProvider;
-import com.swiggy.order.Order;
+import com.swiggy.assign.entity.DeliveryExec;
+import com.swiggy.assign.delivery.DeliveryExecProvider;
+import com.swiggy.assign.entity.Order;
 
 public interface AssignmentStrategy {
 

@@ -1,13 +1,24 @@
-package com.swiggy.delivery;
+package com.swiggy.assign.entity;
 
 public class DeliveryExec {
 
     long id;
     long lat;
     long lon;
-    long lastOrderDeliveryTime;
+    long lastOrderDeliveryTime; // in minutes
     long numOrdersDelivered;
 
+    public DeliveryExec() {
+
+    }
+
+    public DeliveryExec(long id, long lat, long lon, long lastOrderDeliveryTime, long numOrdersDelivered) {
+        this.id = id;
+        this.lat = lat;
+        this.lon = lon;
+        this.lastOrderDeliveryTime = lastOrderDeliveryTime;
+        this.numOrdersDelivered = numOrdersDelivered;
+    }
 
     public long getId() {
         return id;

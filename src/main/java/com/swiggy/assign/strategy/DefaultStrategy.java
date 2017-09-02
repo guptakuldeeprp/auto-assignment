@@ -1,12 +1,13 @@
 package com.swiggy.assign.strategy;
 
-import com.swiggy.delivery.DeliveryExec;
-import com.swiggy.delivery.DeliveryExecProvider;
-import com.swiggy.delivery.impl.InMemoryDeliveryExecProvider;
-import com.swiggy.order.Order;
+import com.swiggy.assign.entity.DeliveryExec;
+import com.swiggy.assign.delivery.DeliveryExecProvider;
+import com.swiggy.assign.delivery.impl.InMemoryDeliveryExecProvider;
+import com.swiggy.assign.entity.Order;
 import com.swiggy.util.Haversine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class DefaultStrategy implements AssignmentStrategy {
@@ -24,7 +25,7 @@ public class DefaultStrategy implements AssignmentStrategy {
 
     public DeliveryExec getDeliveryExec(Order order, DeliveryExecProvider provider) {
         if (provider == null || order == null) return null;
-        List<DeliveryExec> deliveryExecs = provider.listDeliveryExecs();
+        Collection<DeliveryExec> deliveryExecs = provider.listDeliveryExecs();
         if (deliveryExecs.size() == 0) return null;
         double minScore = Double.MAX_VALUE;
         final List<DeliveryExec> result = new ArrayList<DeliveryExec>();

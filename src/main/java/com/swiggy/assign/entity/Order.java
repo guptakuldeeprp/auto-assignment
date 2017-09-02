@@ -1,11 +1,13 @@
-package com.swiggy.order;
+package com.swiggy.assign.entity;
+
+import java.util.concurrent.TimeUnit;
 
 public class Order {
 
     long id;
     double lat;
     double lon;
-    double orderTime;
+    double orderTime = TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis());
 
     public Order() {
 

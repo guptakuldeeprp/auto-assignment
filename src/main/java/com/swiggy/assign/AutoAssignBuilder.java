@@ -1,21 +1,26 @@
 package com.swiggy.assign;
 
 import com.swiggy.assign.strategy.AssignmentStrategy;
-import com.swiggy.delivery.DeliveryExec;
-import com.swiggy.delivery.DeliveryExecProvider;
+import com.swiggy.assign.delivery.DeliveryExecProvider;
+import com.swiggy.assign.strategy.DefaultStrategy;
 
 public class AutoAssignBuilder {
 
-    public void withAssignmentStrategy(AssignmentStrategy assignmentStrategy) {
+    private AssignmentStrategy assignmentStrategy = new DefaultStrategy();
+    private DeliveryExecProvider deliveryExecProvider;
 
+    public AutoAssignBuilder withAssignmentStrategy(AssignmentStrategy assignmentStrategy) {
+        this.assignmentStrategy = assignmentStrategy;
+        return this;
     }
 
-    public void withDeliveryExecProvider(DeliveryExecProvider deliveryExecProvider) {
-
+    public AutoAssignBuilder withDeliveryExecProvider(DeliveryExecProvider deliveryExecProvider) {
+        this.deliveryExecProvider = deliveryExecProvider;
+        return this;
     }
 
     public AutoAssign build() {
-        return null;
+        return new AutoAssign(assignmentStrategy, deliveryExecProvider);
     }
 
 }

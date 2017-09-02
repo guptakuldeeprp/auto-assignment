@@ -2,7 +2,7 @@ package com.swiggy.util;
 
 public class Haversine {
 
-    private static final int EARTH_RADIUS = 6371; // Approx Earth radius in KM
+    private static final int EARTH_RADIUS = 6371000; // Approx Earth radius in meters
 
 
     public static double distance(double startLat, double startLong,
@@ -30,4 +30,5 @@ public class Haversine {
         return Math.pow(Math.sin(val / 2), 2);
 
     }
+
 }
