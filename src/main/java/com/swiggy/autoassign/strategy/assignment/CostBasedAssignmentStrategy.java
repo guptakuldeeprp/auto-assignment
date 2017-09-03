@@ -26,6 +26,7 @@ public class CostBasedAssignmentStrategy implements AssignmentStrategy {
     }
 
     public CostBasedAssignmentStrategy(CostStrategy costStrategy, AssignmentStrategy baseStrategy) {
+        this.costStrategy = costStrategy;
         this.baseStrategy = baseStrategy;
     }
 
@@ -47,7 +48,7 @@ public class CostBasedAssignmentStrategy implements AssignmentStrategy {
             if (cost == minCost)
                 result.add(deliveryExec);
         }
-        if (baseStrategy != null)
+        if (result.size() > 0 && baseStrategy != null)
             return baseStrategy.getDeliveryExec(order, new InMemoryDeliveryExecProvider(result));
         return result.get(0);
     }

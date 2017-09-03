@@ -20,6 +20,7 @@ public class InMemoryDeliveryExecProvider implements DeliveryExecProvider {
     }
 
     public void assigned(DeliveryExec deliveryExec) {
+
         deliveryExecs.remove(deliveryExec);
     }
 }

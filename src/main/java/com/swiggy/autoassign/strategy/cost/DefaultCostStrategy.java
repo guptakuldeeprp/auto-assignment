@@ -8,6 +8,6 @@ public class DefaultCostStrategy implements CostStrategy {
     @Override
     public double getCost(Order order, DeliveryExec deliveryExec) {
         double haversine = Haversine.distance(deliveryExec.getLat(), deliveryExec.getLon(), order.getLat(), order.getLon());
-        return haversine * (1 / order.getOrderTime()) * (1 / deliveryExec.getLastOrderDeliveryTime());
+        return haversine * (1D / order.getOrderTime()) * (1D / deliveryExec.getLastOrderDeliveryTime());
     }
 }

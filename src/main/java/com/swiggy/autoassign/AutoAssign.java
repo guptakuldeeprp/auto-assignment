@@ -32,11 +32,9 @@ public class AutoAssign {
     public Map<Order, DeliveryExec> assing(List<Order> orderList) {
         //ExecutorService execService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 1);
         int nSplits = numSplits(orderList);
-        if (nSplits == 0) return computeOrderAssignment(orderList, 0, orderList.size() - 1);
+        //if (nSplits == 0) return computeOrderAssignment(orderList, 0, orderList.size() - 1);
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-
-
-        return null;
+        return forkJoinPool.invoke(new SplitAssignTask(orderList, nSplits));
 
     }
 

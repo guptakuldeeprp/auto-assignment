@@ -3,8 +3,8 @@ package com.swiggy.autoassign.entity;
 public class DeliveryExec {
 
     long id;
-    long lat;
-    long lon;
+    double lat;
+    double lon;
     long lastOrderDeliveryTime; // in minutes
     long numOrdersDelivered;
 
@@ -12,7 +12,7 @@ public class DeliveryExec {
 
     }
 
-    public DeliveryExec(long id, long lat, long lon, long lastOrderDeliveryTime, long numOrdersDelivered) {
+    public DeliveryExec(long id, double lat, double lon, long lastOrderDeliveryTime, long numOrdersDelivered) {
         this.id = id;
         this.lat = lat;
         this.lon = lon;
@@ -28,7 +28,7 @@ public class DeliveryExec {
         this.id = id;
     }
 
-    public long getLat() {
+    public double getLat() {
         return lat;
     }
 
@@ -36,7 +36,7 @@ public class DeliveryExec {
         this.lat = lat;
     }
 
-    public long getLon() {
+    public double getLon() {
         return lon;
     }
 
@@ -56,6 +56,10 @@ public class DeliveryExec {
         return numOrdersDelivered;
     }
 
+    public void incrOrdersDelivered() {
+        ++numOrdersDelivered;
+    }
+
     public void setNumOrdersDelivered(long numOrdersDelivered) {
         this.numOrdersDelivered = numOrdersDelivered;
     }
@@ -73,5 +77,16 @@ public class DeliveryExec {
     @Override
     public int hashCode() {
         return (int) (id ^ (id >>> 32));
+    }
+
+    @Override
+    public String toString() {
+        return "DeliveryExec{" +
+                "id=" + id +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                ", lastOrderDeliveryTime=" + lastOrderDeliveryTime +
+                ", numOrdersDelivered=" + numOrdersDelivered +
+                '}';
     }
 }
