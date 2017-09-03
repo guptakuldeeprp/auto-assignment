@@ -20,6 +20,6 @@ Assumptions:
  After some research, I came across an algorithm called Hungarian algorithm / Kuhn-Munkres algorithm which can be used to solve it in O(n^3) running time.<br />
  There are research papers available to make this algorithm faster by running in parallel. <br /> <br />
  We can use a [JGraphT](http://jgrapht.org/) - The java graph library, to calculate the Order -> DeliveryExecutive assignment.<br />
- This seemed like an over kill as it will increase time and space complexity a lot.<br />
+ This seemed like an over kill for assignment problem as it will increase time and space complexity a lot.<br />
  For production use case, we will need to implement and optimize it if optimal minimal cost assignment is required.
 
